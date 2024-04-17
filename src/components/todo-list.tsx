@@ -32,8 +32,8 @@ const TodoList = ({ todos }: Props) => {
           </div>
         </>
       ) : (
-        <div className="h-full w-full flex items-center justify-center text-xl font-medium">
-          No Todos
+        <div className="h-full w-full flex items-center justify-center text-xl">
+          No Todos 😕
         </div>
       )}
       <div className="absolute -bottom-8 left-1/2 -translate-x-1/2">

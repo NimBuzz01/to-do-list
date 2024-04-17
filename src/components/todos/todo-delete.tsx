@@ -23,7 +23,7 @@ const TodoDelete = ({ id }: Props) => {
       variant="ghost"
       className="w-8 h-8"
     >
-      <Trash2 className="w-5 h-5 text-red-600" />
+      <Trash2 className="w-5 h-5 text-red-500" />
     </Button>
   );
 };
