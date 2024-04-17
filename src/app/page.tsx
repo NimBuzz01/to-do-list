@@ -17,9 +17,11 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
+import { useKeyContext } from "@/contexts/key-context";
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const { key } = useKeyContext();
 
   useEffect(() => {
     const fetchTodos = async () => {
@@ -28,7 +30,7 @@ export default function Home() {
     };
 
     fetchTodos();
-  }, []);
+  }, [key]);
 
   const getTodoPosition = (id: UniqueIdentifier) =>
     todos.findIndex((todo) => todo.id === id);
@@ -54,9 +56,15 @@ export default function Home() {
     },
   });
 
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      distance: 4,
+    },
+  });
+
   const sensors = useSensors(
     mouseSensor,
-    useSensor(TouchSensor),
+    touchSensor,
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })

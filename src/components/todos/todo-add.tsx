@@ -12,10 +12,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { addTodo } from "@/lib/utils";
 import { v4 as uuidv4 } from "uuid";
+import { useKeyContext } from "@/contexts/key-context";
 
 const TodoAdd = () => {
   const [input, setInput] = useState("");
   const [open, setOpen] = useState(false);
+  const { incrementKey } = useKeyContext();
 
   const handleAddTodo = async () => {
     const newTodo = {
@@ -23,8 +25,8 @@ const TodoAdd = () => {
       text: input,
       completed: false,
     };
-
     await addTodo(newTodo);
+    incrementKey();
     setOpen(false);
   };
 
@@ -38,7 +40,10 @@ const TodoAdd = () => {
           <Plus className="w-9 h-9" />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent
+        onKeyDown={(e) => e.stopPropagation()}
+        className="sm:max-w-[425px]"
+      >
         <DialogHeader>
           <DialogTitle>Add Todo</DialogTitle>
         </DialogHeader>

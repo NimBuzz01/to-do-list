@@ -2,18 +2,18 @@ import React from "react";
 import { Button } from "../ui/button";
 import { Trash2 } from "lucide-react";
 import { deleteTodo } from "@/lib/utils";
-import { useRouter } from "next/navigation";
+import { useKeyContext } from "@/contexts/key-context";
 
 interface Props {
   id: string;
 }
 
 const TodoDelete = ({ id }: Props) => {
-  const router = useRouter();
+  const { incrementKey } = useKeyContext();
 
   const handleDeleteTodo = async () => {
     await deleteTodo(id);
-    router.refresh();
+    incrementKey();
   };
 
   return (
