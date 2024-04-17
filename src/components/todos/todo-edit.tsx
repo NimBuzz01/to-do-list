@@ -56,7 +56,6 @@ const TodoEdit = ({ todo }: Props) => {
           onChange={(e) => {
             setInput(e.target.value);
           }}
-          className="col-span-3"
         />
         <DialogFooter>
           <Button type="submit" onClick={handleEditTodo}>

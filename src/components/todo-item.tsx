@@ -26,13 +26,13 @@ const TodoItem = ({ todo }: Props) => {
       {...attributes}
       {...listeners}
       style={style}
-      className="flex items-center space-x-1 my-1 px-2 py-1"
+      className="flex items-center flex-wrap space-x-1 my-1 px-2 py-1"
     >
       <TodoCheck todo={todo} />
       <p
         className={`${
           todo.completed && "line-through"
-        } pl-2 grow text-slate-600 dark:text-slate-300`}
+        } pl-2 mr-auto grow text-slate-600 dark:text-slate-300`}
       >
         {todo.text}
       </p>

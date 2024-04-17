@@ -53,7 +53,6 @@ const TodoAdd = () => {
           onChange={(e) => {
             setInput(e.target.value);
           }}
-          className="col-span-3"
         />
         <DialogFooter>
           <Button type="submit" onClick={handleAddTodo}>
