@@ -15,6 +15,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const TodoAdd = () => {
   const [input, setInput] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleAddTodo = async () => {
     const newTodo = {
@@ -24,10 +25,11 @@ const TodoAdd = () => {
     };
 
     await addTodo(newTodo);
+    setOpen(false);
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           size="icon"

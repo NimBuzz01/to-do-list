@@ -19,6 +19,7 @@ interface Props {
 
 const TodoEdit = ({ todo }: Props) => {
   const [input, setInput] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleEditTodo = async () => {
     const newTodo = {
@@ -28,10 +29,11 @@ const TodoEdit = ({ todo }: Props) => {
     };
 
     await editTodo(newTodo);
+    setOpen(false);
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="icon" variant="ghost" className="w-8 h-8">
           <Pencil className="w-5 h-5 text-blue-500" />

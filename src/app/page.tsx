@@ -56,7 +56,6 @@ export default function Home() {
 
   const sensors = useSensors(
     mouseSensor,
-    useSensor(PointerSensor),
     useSensor(TouchSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
