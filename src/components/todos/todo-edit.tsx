@@ -48,7 +48,7 @@ const TodoEdit = ({ todo }: Props) => {
         className="sm:max-w-[425px]"
       >
         <DialogHeader>
-          <DialogTitle>Edit Todo</DialogTitle>
+          <DialogTitle>Edit To-do</DialogTitle>
         </DialogHeader>
         <Input
           id="todo"

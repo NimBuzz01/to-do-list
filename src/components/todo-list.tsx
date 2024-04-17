@@ -16,7 +16,7 @@ const TodoList = ({ todos }: Props) => {
   return (
     <Card className="relative p-2 sm:p-5 max-w-[600px] h-[80dvh] w-full dark:bg-slate-800 bg-slate-100">
       <div className="absolute -top-7 right-3">
-        <p className="text-lg italic">Todo List</p>
+        <p className="text-lg italic">To-do List</p>
       </div>
       {todos.length > 0 ? (
         <>
@@ -33,7 +33,7 @@ const TodoList = ({ todos }: Props) => {
         </>
       ) : (
         <div className="flex items-center justify-center w-full h-full text-xl">
-          No Todos 😕
+          No To-dos 😕
         </div>
       )}
       <div className="absolute -translate-x-1/2 -bottom-8 left-1/2">

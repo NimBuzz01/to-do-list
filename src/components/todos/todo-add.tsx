@@ -45,7 +45,7 @@ const TodoAdd = () => {
         className="sm:max-w-[425px]"
       >
         <DialogHeader>
-          <DialogTitle>Add Todo</DialogTitle>
+          <DialogTitle>Add To-do</DialogTitle>
         </DialogHeader>
         <Input
           id="todo"
