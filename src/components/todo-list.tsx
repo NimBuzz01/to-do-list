@@ -22,8 +22,8 @@ const TodoList = ({ todos }: Props) => {
               items={todos}
               strategy={verticalListSortingStrategy}
             >
-              {todos.map((todo, index) => (
-                <TodoItem todo={todo} key={index} />
+              {todos.map((todo) => (
+                <TodoItem todo={todo} key={todo.id} />
               ))}
             </SortableContext>
           </div>
