@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": "6c48bb89-9764-40e6-91db-c5e05fea72a2",
+      "text": "uwu",
+      "completed": false
+    },
+    {
+      "id": "9b4df445-987a-4b28-9eb0-26f74104d04b",
+      "text": "hello wworld",
+      "completed": true
+    },
+    {
+      "id": "154bd7b6-c091-402e-a1c0-f7bca0faa8e0",
+      "text": "hellow",
+      "completed": false
+    }
+  ]
+}
