@@ -35,7 +35,7 @@ const TodoAdd = () => {
       <DialogTrigger asChild>
         <Button
           size="icon"
-          className="bg-green-500 hover:bg-green-600 rounded-full w-16 h-16"
+          className="w-16 h-16 bg-green-500 rounded-full hover:bg-green-600"
         >
           <Plus className="w-9 h-9" />
         </Button>

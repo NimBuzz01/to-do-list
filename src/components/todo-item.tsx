@@ -26,7 +26,7 @@ const TodoItem = ({ todo }: Props) => {
       {...attributes}
       {...listeners}
       style={style}
-      className="flex items-center flex-wrap space-x-1 my-1 px-2 py-1"
+      className="flex flex-wrap items-center px-2 py-1 my-1 space-x-1"
     >
       <TodoCheck todo={todo} />
       <p

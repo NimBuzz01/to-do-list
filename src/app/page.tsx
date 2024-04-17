@@ -71,7 +71,7 @@ export default function Home() {
   );
 
   return (
-    <main className="flex h-screen w-full items-center justify-center">
+    <main className="flex items-center justify-center w-full h-screen">
       <DndContext
         sensors={sensors}
         onDragEnd={handleDragEnd}

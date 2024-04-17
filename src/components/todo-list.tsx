@@ -32,11 +32,11 @@ const TodoList = ({ todos }: Props) => {
           </div>
         </>
       ) : (
-        <div className="h-full w-full flex items-center justify-center text-xl">
+        <div className="flex items-center justify-center w-full h-full text-xl">
           No Todos 😕
         </div>
       )}
-      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2">
+      <div className="absolute -translate-x-1/2 -bottom-8 left-1/2">
         <TodoAdd />
       </div>
     </Card>
