@@ -10,12 +10,7 @@ interface Props {
 const TodoCheck = ({ todo }: Props) => {
   const todos = useTodos();
 
-  const handleCheckTodo = async () => {
-    const newTodo = {
-      id: todo.id,
-      text: todo.text,
-      completed: todo.completed ? false : true,
-    };
+  const handleCheckTodo = () => {
     todos.checkTodo(todo.id);
   };
 

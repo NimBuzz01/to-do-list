@@ -10,7 +10,7 @@ interface Props {
 const TodoDelete = ({ id }: Props) => {
   const todos = useTodos();
 
-  const handleDeleteTodo = async () => {
+  const handleDeleteTodo = () => {
     todos.removeTodo(id);
   };
 

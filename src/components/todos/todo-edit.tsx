@@ -23,7 +23,7 @@ const TodoEdit = ({ todo }: Props) => {
   const [input, setInput] = useState("");
   const [open, setOpen] = useState(false);
 
-  const handleEditTodo = async () => {
+  const handleEditTodo = () => {
     const newTodo = {
       id: todo.id,
       text: input,

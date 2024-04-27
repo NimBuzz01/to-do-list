@@ -19,7 +19,7 @@ const TodoAdd = () => {
 
   const todos = useTodos();
 
-  const handleAddTodo = async () => {
+  const handleAddTodo = () => {
     const newTodo = {
       id: uuidv4(),
       text: input,
