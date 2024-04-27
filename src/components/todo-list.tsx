@@ -14,7 +14,7 @@ interface Props {
 
 const TodoList = ({ todos }: Props) => {
   return (
-    <Card className="rounded-none relative p-2 sm:p-5 max-w-[600px] h-[70dvh] w-full dark:bg-slate-700 bg-slate-100">
+    <Card className="rounded-none relative p-2 sm:p-5 max-w-[600px] h-[70dvh] w-full dark:bg-slate-700 bg-slate-50">
       {todos.length > 0 ? (
         <>
           <div className="overflow-y-auto overflow-x-hidden h-[60dvh] scrollbar-thumb-slate-700 scrollbar-track-slate-300 scrollbar-thin">
@@ -29,7 +29,7 @@ const TodoList = ({ todos }: Props) => {
           </div>
         </>
       ) : (
-        <div className="flex items-center justify-center w-full h-full text-lg font-semibold text-slate-900">
+        <div className="flex items-center justify-center w-full h-full text-lg font-semibold">
           No Todos 😕
         </div>
       )}

@@ -1,4 +1,4 @@
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "react-toastify";
 import { Todo } from "@/lib/types";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
@@ -22,14 +22,10 @@ const useTodos = create(
         const currentItems = get().todos;
         const existingItem = currentItems.find((item) => item.id === data.id);
         if (existingItem) {
-          toast({
-            description: "Todo already exists!",
-          });
+          toast.warn("Todo already exists!");
         }
         set({ todos: [...get().todos, data] });
-        toast({
-          description: "Todo added successfully!",
-        });
+        toast.success("Todo added successfully!");
       },
       editTodo: (data: Todo) => {
         const currentItems = get().todos;
@@ -40,13 +36,9 @@ const useTodos = create(
         if (existingItemIndex !== -1) {
           currentItems[existingItemIndex] = data;
           set({ todos: currentItems });
-          toast({
-            description: "Todo updated successfully!",
-          });
+          toast.success("Todo updated successfully!");
         } else {
-          toast({
-            description: "Todo not found!",
-          });
+          toast.error("Todo not found!");
         }
       },
       checkTodo: (id: string) => {
@@ -57,22 +49,16 @@ const useTodos = create(
           todoToCheck.completed = !todoToCheck.completed;
           set({ todos: currentItems });
         } else {
-          toast({
-            description: "Todo not found!",
-          });
+          toast.error("Todo not found!");
         }
       },
       removeTodo: (id: string) => {
         set({ todos: get().todos.filter((item) => item.id !== id) });
-        toast({
-          description: "Todo removed!",
-        });
+        toast.success("Todo removed!");
       },
       removeAll: () => {
         set({ todos: [] });
-        toast({
-          description: "Todos cleared!",
-        });
+        toast.success("Todos cleared!");
       },
     }),
     {

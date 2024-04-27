@@ -4,7 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import ToggleTheme from "@/components/toggle-theme";
 import Footer from "@/components/footer";
-import { Toaster } from "@/components/ui/toaster";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -28,7 +29,7 @@ export default function RootLayout({
           <div className="bg-[#A3D8FF] dark:bg-slate-900">
             {children}
             <Footer />
-            <Toaster />
+            <ToastContainer />
           </div>
           <ToggleTheme />
         </ThemeProvider>
