@@ -43,7 +43,7 @@ const TodoEdit = ({ todo }: Props) => {
       </DialogTrigger>
       <DialogContent
         onKeyDown={(e) => e.stopPropagation()}
-        className="sm:max-w-[425px]"
+        className="sm:max-w-[600px]"
       >
         <DialogHeader>
           <DialogTitle>Edit To-do</DialogTitle>

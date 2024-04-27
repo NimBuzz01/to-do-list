@@ -32,7 +32,7 @@ const TodoItem = ({ todo }: Props) => {
       <p
         className={`${
           todo.completed && "line-through"
-        } pl-2 mr-auto grow text-slate-600 dark:text-slate-300`}
+        } pl-2 font-medium mr-auto grow text-slate-600 dark:text-slate-300`}
       >
         {todo.text}
       </p>

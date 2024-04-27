@@ -1,3 +1,4 @@
+import { toast } from "@/components/ui/use-toast";
 import { Todo } from "@/lib/types";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
@@ -21,9 +22,14 @@ const useTodos = create(
         const currentItems = get().todos;
         const existingItem = currentItems.find((item) => item.id === data.id);
         if (existingItem) {
-          //   return alert("Todo already exists");
+          toast({
+            description: "Todo already exists!",
+          });
         }
         set({ todos: [...get().todos, data] });
+        toast({
+          description: "Todo added successfully!",
+        });
       },
       editTodo: (data: Todo) => {
         const currentItems = get().todos;
@@ -34,9 +40,13 @@ const useTodos = create(
         if (existingItemIndex !== -1) {
           currentItems[existingItemIndex] = data;
           set({ todos: currentItems });
-          //   alert("Todo updated successfully");
+          toast({
+            description: "Todo updated successfully!",
+          });
         } else {
-          //   alert("Todo not found");
+          toast({
+            description: "Todo not found!",
+          });
         }
       },
       checkTodo: (id: string) => {
@@ -46,18 +56,23 @@ const useTodos = create(
         if (todoToCheck) {
           todoToCheck.completed = !todoToCheck.completed;
           set({ todos: currentItems });
-          //   alert("Todo status updated");
         } else {
-          //   alert("Todo not found");
+          toast({
+            description: "Todo not found!",
+          });
         }
       },
       removeTodo: (id: string) => {
         set({ todos: get().todos.filter((item) => item.id !== id) });
-        // alert("Todo removed");
+        toast({
+          description: "Todo removed!",
+        });
       },
       removeAll: () => {
         set({ todos: [] });
-        // alert("Todos cleared");
+        toast({
+          description: "Todos cleared!",
+        });
       },
     }),
     {

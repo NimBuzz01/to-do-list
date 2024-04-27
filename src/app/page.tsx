@@ -73,7 +73,10 @@ export default function Home() {
   );
 
   return (
-    <main className="flex items-center justify-center w-full h-screen">
+    <main className="flex flex-col items-center justify-center w-full h-screen">
+      <h1 className="w-full shadow-sm max-w-[600px] py-3 mb-4 font-semibold tracking-wider text-center bg-primary text-secondary dark:text-slate-100">
+        Todo List
+      </h1>
       <DndContext
         sensors={sensors}
         onDragEnd={handleDragEnd}

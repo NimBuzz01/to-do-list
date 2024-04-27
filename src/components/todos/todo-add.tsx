@@ -32,16 +32,14 @@ const TodoAdd = () => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
-          size="icon"
-          className="w-16 h-16 bg-green-500 rounded-full hover:bg-green-600"
-        >
-          <Plus className="w-9 h-9" />
+        <Button className="flex items-center gap-1 rounded-full">
+          <Plus className="w-5 h-5 dark:text-slate-100" />
+          <p className="font-semibold dark:text-slate-100">New Todo</p>
         </Button>
       </DialogTrigger>
       <DialogContent
         onKeyDown={(e) => e.stopPropagation()}
-        className="sm:max-w-[425px]"
+        className="sm:max-w-[600px]"
       >
         <DialogHeader>
           <DialogTitle>Add To-do</DialogTitle>

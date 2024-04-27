@@ -14,13 +14,10 @@ interface Props {
 
 const TodoList = ({ todos }: Props) => {
   return (
-    <Card className="relative p-2 sm:p-5 max-w-[600px] h-[80dvh] w-full dark:bg-slate-800 bg-slate-100">
-      <div className="absolute -top-7 right-3">
-        <p className="text-lg italic">To-do List</p>
-      </div>
+    <Card className="rounded-none relative p-2 sm:p-5 max-w-[600px] h-[70dvh] w-full dark:bg-slate-700 bg-slate-100">
       {todos.length > 0 ? (
         <>
-          <div className="overflow-y-auto overflow-x-hidden h-[70dvh] scrollbar-thumb-slate-700 scrollbar-track-slate-300 scrollbar-thin">
+          <div className="overflow-y-auto overflow-x-hidden h-[60dvh] scrollbar-thumb-slate-700 scrollbar-track-slate-300 scrollbar-thin">
             <SortableContext
               items={todos}
               strategy={verticalListSortingStrategy}
@@ -32,11 +29,11 @@ const TodoList = ({ todos }: Props) => {
           </div>
         </>
       ) : (
-        <div className="flex items-center justify-center w-full h-full text-xl">
-          No To-dos 😕
+        <div className="flex items-center justify-center w-full h-full text-lg font-semibold text-slate-900">
+          No Todos 😕
         </div>
       )}
-      <div className="absolute -translate-x-1/2 -bottom-8 left-1/2">
+      <div className="absolute -translate-x-1/2 -bottom-5 left-1/2">
         <TodoAdd />
       </div>
     </Card>
