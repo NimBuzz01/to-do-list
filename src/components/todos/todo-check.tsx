@@ -1,15 +1,14 @@
 import React from "react";
 import { Todo } from "@/lib/types";
-import { editTodo } from "@/lib/utils";
 import { Checkbox } from "../ui/checkbox";
-import { useKeyContext } from "@/contexts/key-context";
+import useTodos from "@/hooks/use-todo";
 
 interface Props {
   todo: Todo;
 }
 
 const TodoCheck = ({ todo }: Props) => {
-  const { incrementKey } = useKeyContext();
+  const todos = useTodos();
 
   const handleCheckTodo = async () => {
     const newTodo = {
@@ -17,9 +16,7 @@ const TodoCheck = ({ todo }: Props) => {
       text: todo.text,
       completed: todo.completed ? false : true,
     };
-
-    await editTodo(newTodo);
-    incrementKey();
+    todos.checkTodo(todo.id);
   };
 
   return (

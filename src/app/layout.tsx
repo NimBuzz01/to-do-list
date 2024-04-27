@@ -3,7 +3,6 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import ToggleTheme from "@/components/toggle-theme";
-import { KeyProvider } from "@/contexts/key-context";
 import Footer from "@/components/footer";
 
 const montserrat = Montserrat({
@@ -25,13 +24,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={montserrat.className}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <KeyProvider>
-            <div className="bg-gradient-to-r from-[#93A5CF] to-[#E4EfE9] dark:from-[#09203F] dark:to-[#537895]">
-              {children}
-              <Footer />
-            </div>
-            <ToggleTheme />
-          </KeyProvider>
+          <div className="bg-gradient-to-r from-[#93A5CF] to-[#E4EfE9] dark:from-[#09203F] dark:to-[#537895]">
+            {children}
+            <Footer />
+          </div>
+          <ToggleTheme />
         </ThemeProvider>
       </body>
     </html>

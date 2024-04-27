@@ -10,16 +10,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { editTodo } from "@/lib/utils";
 import { Todo } from "@/lib/types";
-import { useKeyContext } from "@/contexts/key-context";
+import useTodos from "@/hooks/use-todo";
 
 interface Props {
   todo: Todo;
 }
 
 const TodoEdit = ({ todo }: Props) => {
-  const { incrementKey } = useKeyContext();
+  const todos = useTodos();
 
   const [input, setInput] = useState("");
   const [open, setOpen] = useState(false);
@@ -31,8 +30,7 @@ const TodoEdit = ({ todo }: Props) => {
       completed: todo.completed,
     };
 
-    await editTodo(newTodo);
-    incrementKey();
+    todos.editTodo(newTodo);
     setOpen(false);
   };
 

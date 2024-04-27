@@ -2,7 +2,6 @@
 
 import TodoList from "@/components/todo-list";
 import { Todo } from "@/lib/types";
-import { getAllTodos } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import {
   DndContext,
@@ -17,23 +16,30 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { arrayMove, sortableKeyboardCoordinates } from "@dnd-kit/sortable";
-import { useKeyContext } from "@/contexts/key-context";
+import useTodos from "@/hooks/use-todo";
 
 export default function Home() {
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const { key } = useKeyContext();
+  const todos = useTodos();
 
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const todos = await getAllTodos();
-      setTodos(todos);
-    };
+  const reorderTodos = (
+    todos: Todo[],
+    activeId: UniqueIdentifier,
+    overId: UniqueIdentifier
+  ) => {
+    const originalPos = todos.findIndex((item) => item.id === activeId);
+    const newPos = todos.findIndex((item) => item.id === overId);
 
-    fetchTodos();
-  }, [key]);
+    if (originalPos === -1 || newPos === -1) {
+      alert("Invalid todo IDs provided.");
+      return todos;
+    }
 
-  const getTodoPosition = (id: UniqueIdentifier) =>
-    todos.findIndex((todo) => todo.id === id);
+    const reorderedTodos = [...todos];
+    const [movedTodo] = reorderedTodos.splice(originalPos, 1);
+    reorderedTodos.splice(newPos, 0, movedTodo);
+
+    return reorderedTodos;
+  };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
@@ -42,12 +48,8 @@ export default function Home() {
 
     if (active.id === over.id) return;
 
-    setTodos((todos) => {
-      const originalPos = getTodoPosition(active.id);
-      const newPos = getTodoPosition(over.id);
-
-      return arrayMove(todos, originalPos, newPos);
-    });
+    const updatedTodos = reorderTodos(todos.todos, active.id, over.id);
+    todos.setTodos(updatedTodos);
   };
 
   const mouseSensor = useSensor(MouseSensor, {
@@ -77,7 +79,7 @@ export default function Home() {
         onDragEnd={handleDragEnd}
         collisionDetection={closestCorners}
       >
-        <TodoList todos={todos} />
+        <TodoList todos={todos.todos} />
       </DndContext>
     </main>
   );

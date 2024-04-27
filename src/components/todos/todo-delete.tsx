@@ -1,19 +1,17 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { Trash2 } from "lucide-react";
-import { deleteTodo } from "@/lib/utils";
-import { useKeyContext } from "@/contexts/key-context";
+import useTodos from "@/hooks/use-todo";
 
 interface Props {
   id: string;
 }
 
 const TodoDelete = ({ id }: Props) => {
-  const { incrementKey } = useKeyContext();
+  const todos = useTodos();
 
   const handleDeleteTodo = async () => {
-    await deleteTodo(id);
-    incrementKey();
+    todos.removeTodo(id);
   };
 
   return (

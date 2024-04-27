@@ -10,14 +10,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { addTodo } from "@/lib/utils";
 import { v4 as uuidv4 } from "uuid";
-import { useKeyContext } from "@/contexts/key-context";
+import useTodos from "@/hooks/use-todo";
 
 const TodoAdd = () => {
   const [input, setInput] = useState("");
   const [open, setOpen] = useState(false);
-  const { incrementKey } = useKeyContext();
+
+  const todos = useTodos();
 
   const handleAddTodo = async () => {
     const newTodo = {
@@ -25,8 +25,7 @@ const TodoAdd = () => {
       text: input,
       completed: false,
     };
-    await addTodo(newTodo);
-    incrementKey();
+    todos.addTodo(newTodo);
     setOpen(false);
   };
 
